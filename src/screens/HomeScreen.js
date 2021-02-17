@@ -1,25 +1,26 @@
 import React from 'react';
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {Text, View, ScrollView, Image} from 'react-native';
-import {DateTime} from 'luxon';
+import { Text, View, ScrollView, Image } from 'react-native';
+import { DateTime } from 'luxon';
 import Menu from '../components/menu';
+import ShadowText from '../components/shadowText';
 
 const DateGreeting = () => {
   const date = DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd, cccc');
 
   return (
     <View style={styles.dateGreeting}>
-      <Text style={{color: '#FFF'}}>{date}</Text>
-      <Text style={{color: '#FFF', marginTop: 15, fontSize: 30}}>
+      <ShadowText style={{ color: '#FFF' }}>{date}</ShadowText>
+      <ShadowText style={{ color: '#FFF', marginTop: 15, fontSize: 30 }}>
         記錄你的到訪
-      </Text>
+      </ShadowText>
     </View>
   );
 };
 
-const HomeScreen = ({navigation, route}) => {
+const HomeScreen = ({ navigation, route }) => {
   return (
     <ScrollView
       style={styles.view}
@@ -33,19 +34,33 @@ const HomeScreen = ({navigation, route}) => {
           <View style={styles.menuView}>
             <Menu navigation={navigation} />
             <View style={styles.imageContainer}>
-              <Image
-                source={require('../../images/fake_home_buttom_notice.png')}
-                style={{
-                  width: '80%',
-                  height: 100,
-                  marginRight: 20,
-                  marginLeft: 20,
-                  borderRadius: 20,
-                }}
-              />
-              <Text style={{position: 'absolute', top: 10, left: 48}}>
-                {DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd')}
-              </Text>
+              <View style={{
+                width: '80%',
+                borderRadius: 5,
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 5,
+                marginRight: 20,
+                marginLeft: 20,
+                overflow: 'hidden'
+              }}>
+
+                <Image
+                  source={require('../../images/fake_home_buttom_notice.png')}
+                  style={{
+                    width: '100%',
+                    height: 100,
+                  }}
+                />
+                <Text style={{ position: 'absolute', top: 15, left: 15, fontSize: 11 }}>
+                  最後更新 {DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd')}
+                </Text>
+              </View>
             </View>
           </View>
         </View>

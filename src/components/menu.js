@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     shadowOffset: {height: 0, width: 0},
     marginBottom: 10,
     // boxShadow: '#cdcdcd 0em 1em 1.5em',
+    elevation: 5,
   },
   itemImage: {
     width: '100%',
