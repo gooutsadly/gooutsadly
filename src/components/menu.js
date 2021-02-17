@@ -19,6 +19,7 @@ const renderItem = ({item, index}) => {
 };
 
 const Menu = ({navigation}) => {
+  
   return (
     <Carousel
       data={[
@@ -49,6 +50,10 @@ const Menu = ({navigation}) => {
       itemWidth={250}
       layout={'default'}
       enableMomentum={true}
+      containerCustomStyle={{
+        paddingLeft: 28,
+      }}
+      activeSlideAlignment={'start'}
     />
   );
 };

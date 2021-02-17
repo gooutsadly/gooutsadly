@@ -35,7 +35,7 @@ const HomeScreen = ({ navigation, route }) => {
             <Menu navigation={navigation} />
             <View style={styles.imageContainer}>
               <View style={{
-                width: '80%',
+                width: '85%',
                 borderRadius: 5,
                 shadowColor: "#000",
                 shadowOffset: {
