@@ -4,6 +4,9 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import ScanScreen from './screens/ScanScreen';
 import DetailScreen from './screens/DetailScreen';
 import HomeScreen from './screens/HomeScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import AppStyles from './AppStyles';
 
 const HomeStack = createStackNavigator();
 
@@ -34,14 +37,13 @@ const HomeStackScreen = ({ navigation, route }) => {
         component={ScanScreen}
         options={{
           title: '掃描二維碼',
-          headerTitleStyle: {
-            color: '#fff',
-          },
+          headerTitleStyle: AppStyles.headerTitleStyle,
           headerTintColor: '#fff', //here I mean that the tintColor will be have that value on the CURRENT(!) screen
           headerStyle: {
             backgroundColor: '#12b187',
           },
-          tabBarVisible: false
+          headerTitleAlign: 'center',
+          headerBackImage: ({ tintColor }) => <Icon name={'chevron-back-outline'} size={36} color={tintColor} style={{ marginLeft: 8 }} />
         }}
       />
       <HomeStack.Screen

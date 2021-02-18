@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 
 const ShadowText = props => {
-  return(
+  return (
     <Text style={{ ...styles.textShadow, ...props.style }}>{props.children}</Text>
   );
 };

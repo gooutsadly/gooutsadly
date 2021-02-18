@@ -6,6 +6,8 @@ import { Text, View, StyleSheet } from 'react-native';
 // import Icon from 'react-native-vector-icons/dist/Entypo';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import AppStyles from './AppStyles';
+
 const Tab = createBottomTabNavigator();
 
 function InBoxScreen() {
@@ -34,7 +36,7 @@ const InBoxStackScreen = () => {
         component={InBoxScreen}
         options={{
           title: '收件箱',
-          headerTitleStyle: styles.headerTitleStyle,
+          headerTitleStyle: AppStyles.headerTitleStyle,
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: '#12b187',
@@ -57,7 +59,7 @@ const SettingsStackScreen = () => {
         component={SettingsScreen}
         options={{
           title: '設定',
-          headerTitleStyle: styles.headerTitleStyle,
+          headerTitleStyle: AppStyles.headerTitleStyle,
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: '#12b187',
@@ -122,13 +124,6 @@ const styles = StyleSheet.create({
     // textShadowOffset: { width: 0, height: 1 },
     // textShadowRadius: 5
   },
-  headerTitleStyle: {
-    color: '#fff',
-    textShadowColor: 'rgba(0, 0, 0, 0.9)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 10,
-    fontSize: 18
-  }
 });
 
 export default Tabs;
