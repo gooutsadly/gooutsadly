@@ -1,12 +1,23 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import ScanScreen from './screens/ScanScreen';
 import DetailScreen from './screens/DetailScreen';
 import HomeScreen from './screens/HomeScreen';
 
 const HomeStack = createStackNavigator();
 
-const HomeStackScreen = () => {
+const HomeStackScreen = ({ navigation, route }) => {
+
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === 'Home') {
+      navigation.setOptions({ tabBarVisible: true });
+    } else {
+      navigation.setOptions({ tabBarVisible: false });
+    }
+  }, [navigation, route]);
+
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -30,10 +41,11 @@ const HomeStackScreen = () => {
           headerStyle: {
             backgroundColor: '#12b187',
           },
+          tabBarVisible: false
         }}
       />
       <HomeStack.Screen
-        options={{headerShown: false, gestureEnabled: false}}
+        options={{ headerShown: false, gestureEnabled: false }}
         name="Detail"
         component={DetailScreen}
       />
