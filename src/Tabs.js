@@ -1,30 +1,16 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeStackScreen from './HomeStack';
-import { Text, View, StyleSheet } from 'react-native';
-// import Icon from 'react-native-vector-icons/dist/Entypo';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Text, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import HomeScreen from './screens/HomeScreen';
+import {ifIphoneX} from 'react-native-iphone-x-helper';
+import InboxScreen from './screens/InboxScreen';
+import SettingsScreen from './screens/SettingsScreen';
 
 import AppStyles from './AppStyles';
 
 const Tab = createBottomTabNavigator();
-
-function InBoxScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>無訊息</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
 const InBoxStack = createStackNavigator();
 
@@ -32,15 +18,15 @@ const InBoxStackScreen = () => {
   return (
     <InBoxStack.Navigator>
       <InBoxStack.Screen
-        name="InBox"
-        component={InBoxScreen}
+        name="Inbox"
+        component={InboxScreen}
         options={{
           title: '收件箱',
           headerTitleStyle: AppStyles.headerTitleStyle,
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: '#12b187',
-            height: 50
+            // height: 50,
           },
           headerTitleAlign: 'center',
         }}
@@ -63,7 +49,7 @@ const SettingsStackScreen = () => {
           headerTintColor: '#fff',
           headerStyle: {
             backgroundColor: '#12b187',
-            height: 50
+            // height: 50,
           },
           headerTitleAlign: 'center',
         }}
@@ -72,14 +58,12 @@ const SettingsStackScreen = () => {
   );
 };
 
-const Tabs = ({ descriptors, navigation }) => {
+const Tabs = ({descriptors, navigation}) => {
   return (
     <Tab.Navigator
-      screenOptions={{ tabBarVisible: false }}
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
           let iconName;
-
           switch (route.name) {
             case '主頁':
               iconName = focused ? 'home' : 'home-outline';
@@ -93,30 +77,27 @@ const Tabs = ({ descriptors, navigation }) => {
             default:
               iconName = focused ? 'home' : 'home-outline';
           }
-
           // You can return any component that you like here!
-          return <Text
-            style={ focused ? styles.textShadow : {} }
-          >
-            <Icon name={iconName} size={size} color={color} />
-          </Text>;
+          return (
+            <Text style={focused ? styles.textShadow : {}}>
+              <Icon name={iconName} size={size} color={color} />
+            </Text>
+          );
         },
       })}
       tabBarOptions={{
         activeTintColor: '#12b187',
         inactiveTintColor: 'gray',
-        style: { height: 90 },
-        iconStyle: { marginTop: 16 },
-        labelStyle: { marginBottom: 16, fontSize: 12 },
-      }}
-    >
-      <Tab.Screen name="主頁" component={HomeStackScreen} />
+        style: {height: ifIphoneX(120, 90)},
+        iconStyle: {marginTop: 16},
+        labelStyle: {marginBottom: 16, fontSize: 12},
+      }}>
+      <Tab.Screen name="主頁" component={HomeScreen} />
       <Tab.Screen name="收件箱" component={InBoxStackScreen} />
       <Tab.Screen name="設定" component={SettingsStackScreen} />
     </Tab.Navigator>
   );
 };
-
 
 const styles = StyleSheet.create({
   textShadow: {
