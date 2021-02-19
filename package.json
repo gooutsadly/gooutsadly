@@ -16,6 +16,7 @@
     "@react-navigation/stack": "^5.14.2",
     "buffer": "^6.0.3",
     "luxon": "^1.25.0",
+    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-camera": "^3.42.2",

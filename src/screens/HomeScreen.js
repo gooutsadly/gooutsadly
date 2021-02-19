@@ -6,9 +6,12 @@ import {Text, View, ScrollView, Image} from 'react-native';
 import {DateTime} from 'luxon';
 import Menu from '../components/menu';
 import ShadowText from '../components/shadowText';
+import moment from 'moment';
+import 'moment/locale/zh-hk';
 
 const DateGreeting = () => {
-  const date = DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd, cccc');
+  // const date = DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd, cccc');
+  const date = moment().locale('zh-hk').format('yyyy-MM-DD, dddd');
 
   return (
     <View style={styles.dateGreeting}>
@@ -87,6 +90,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 20,
     overflow: 'hidden',
+    marginBottom: 100
   },
   noticeImage: {
     width: '100%',
