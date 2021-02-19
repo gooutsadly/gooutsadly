@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -18,9 +18,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import AppStyles from './AppStyles';
 import Tabs from './Tabs';
 
+import SplashScreen from 'react-native-splash-screen';
+
 const Stack = createStackNavigator();
 
 const App = () => {
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator

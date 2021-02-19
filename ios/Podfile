@@ -12,6 +12,8 @@ target 'LeaveHomeSafe' do
   
   pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'LeaveHomeSafeTests' do
     inherit! :complete
     # Pods for testing
