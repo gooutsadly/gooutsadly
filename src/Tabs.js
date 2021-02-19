@@ -1,14 +1,20 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Text, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {Image} from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import {ifIphoneX} from 'react-native-iphone-x-helper';
 import InboxScreen from './screens/InboxScreen';
 import SettingsScreen from './screens/SettingsScreen';
 
 import AppStyles from './AppStyles';
+
+const homeIcon = require('../images/app_assets_tabicons_icon_home.png');
+const homeSelectedIcon = require('../images/app_assets_tabicons_icon_home_selected.png');
+const inboxIcon = require('../images/app_assets_tabicons_icon_inbox.png');
+const inboxSelectedIcon = require('../images/app_assets_tabicons_icon_inbox_selected.png');
+const settingsIcon = require('../images/app_assets_tabicons_icon_settings.png');
+const settingsSelectedIcon = require('../images/app_assets_tabicons_icon_settings_selected.png');
 
 const Tab = createBottomTabNavigator();
 
@@ -63,25 +69,25 @@ const Tabs = ({descriptors, navigation}) => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
-          let iconName;
+          let icon;
           switch (route.name) {
             case '主頁':
-              iconName = focused ? 'home' : 'home-outline';
+              icon = focused ? homeSelectedIcon : homeIcon;
               break;
             case '收件箱':
-              iconName = focused ? 'mail' : 'mail-outline';
+              icon = focused ? inboxSelectedIcon : inboxIcon;
               break;
             case '設定':
-              iconName = focused ? 'settings' : 'settings-outline';
+              icon = focused ? settingsSelectedIcon : settingsIcon;
               break;
             default:
-              iconName = focused ? 'home' : 'home-outline';
+              icon = focused ? homeSelectedIcon : homeIcon;
           }
           // You can return any component that you like here!
           return (
-            <Text style={focused ? styles.textShadow : {}}>
-              <Icon name={iconName} size={size} color={color} />
-            </Text>
+            <Image
+              source={icon}
+            />
           );
         },
       })}
@@ -98,13 +104,5 @@ const Tabs = ({descriptors, navigation}) => {
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  textShadow: {
-    // textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    // textShadowOffset: { width: 0, height: 1 },
-    // textShadowRadius: 5
-  },
-});
 
 export default Tabs;
