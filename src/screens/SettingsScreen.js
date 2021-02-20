@@ -1,9 +1,8 @@
 import React from 'react';
 
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Image, Linking, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {FlatList, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 const refreshIcon = require('../../images/app_assets_icon_refresh.png');
 const arrowRightIcon = require('../../images/app_assets_icon_calendar_arrow_right.png');
@@ -24,20 +23,48 @@ const SettingsScreen = () => {
           {key: '私隱政策', icon: arrowRightIcon},
           {key: '條款及細則', icon: arrowRightIcon},
           {key: '歡迎使用安心出行', icon: arrowRightIcon},
-          {key: '關於安心出行', right: '版本 1.1.5'},
+          {key: '關於', link: '安心出行', right: '版本 1.1.5'},
         ]}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         style={styles.listContainer}
-        renderItem={({item}) => (
-          <TouchableOpacity>
+        renderItem={({item, index}) => (
+          <TouchableOpacity disabled={index === 0 || Boolean(item.link)}>
             <View style={styles.listItem}>
               <View>
-                <Text style={styles.item}>{item.key}</Text>
-                {item.helper && <Text>{item.helper}</Text>}
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.item}>{item.key}</Text>
+                  {item.link && (
+                    <Text
+                      style={{
+                        marginLeft: 3,
+                        fontWeight: 'bold',
+                        color: '#12b187',
+                        textDecorationStyle: 'solid',
+                        textDecorationLine: 'underline',
+                      }}
+                      onPress={() =>
+                        Linking.openURL('https://www.leavehomesafe.gov.hk')
+                      }>
+                      {item.link}
+                    </Text>
+                  )}
+                </View>
+
+                {item.helper && (
+                  <Text style={{color: '#aaa', fontSize: 12, marginTop: 5}}>
+                    {item.helper}
+                  </Text>
+                )}
               </View>
               <View>
                 {/* {item.icon && <Icon name={item.icon} size={36} />} */}
-                {item.icon && <Image source={item.icon} resizeMode={'stretch'} style={{ width: 24, height: 24 }} />}
+                {item.icon && (
+                  <Image
+                    source={item.icon}
+                    resizeMode={'stretch'}
+                    style={{width: 24, height: 24}}
+                  />
+                )}
                 {item.right && <Text>{item.right}</Text>}
               </View>
             </View>
@@ -53,12 +80,13 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
+    backgroundColor: '#fff',
   },
   listContainer: {
     flex: 1,
-    paddingRight: 50,
-    paddingLeft: 50,
-    marginTop: 30,
+    paddingRight: 30,
+    paddingLeft: 30,
+    marginTop: 20,
   },
   separator: {
     height: 1,

@@ -40,7 +40,7 @@ const Menu = ({navigation}) => {
           title: 'on9',
           image: require('../../images/fake_report_pic.png'),
           onPress: () => {
-            navigation.navigate('Scan');
+            navigation.navigate('Detail', {name: 'on9'});
           },
         },
       ]}
@@ -67,12 +67,12 @@ const styles = StyleSheet.create({
     // padding: 50,
     marginLeft: 2,
     marginRight: 2,
-    shadowColor: '#cdcdcd',
+    shadowColor: '#000',
     // shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.75,
-    shadowRadius: 5,
+    shadowRadius: 4,
     // shadowColor: 'red',
-    shadowOffset: {height: 0, width: 0},
+    shadowOffset: {height: 1, width: 0},
     marginBottom: 10,
     // boxShadow: '#cdcdcd 0em 1em 1.5em',
     elevation: 5,

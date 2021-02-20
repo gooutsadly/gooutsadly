@@ -4,11 +4,12 @@ import {StyleSheet} from 'react-native';
 
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {DateTime} from 'luxon';
+import ShadowText from '../components/shadowText';
 
 const DetailScreen = ({navigation, route}) => {
   const {name} = route?.params || {};
   const goBack = () => {
-    navigation.goBack();
+    navigation.navigate('Home', {withBall: true});
   };
 
   return (
@@ -19,23 +20,29 @@ const DetailScreen = ({navigation, route}) => {
           style={styles.crossImage}
         />
       </TouchableOpacity>
-      <Text style={styles.normalText}>你已進入場所</Text>
-      <Text style={styles.locationText}>{name}</Text>
-      <Text style={styles.normalText}>
+      <ShadowText style={styles.normalText}>你已進入場所</ShadowText>
+      <ShadowText style={styles.locationText}>{name}</ShadowText>
+      <ShadowText style={styles.normalText}>
         {DateTime.local().toFormat('yyyy-MM-dd HH:mm')}
-      </Text>
+      </ShadowText>
       <Image
         source={require('../../images/tick.png')}
         style={styles.tickImage}
       />
       <View style={styles.bottom}>
+        <Image
+          source={require('../../images/fake_checkbox.jpg')}
+          style={{width: '100%', height: 135 / 2, marginBottom: 10}}
+        />
         <TouchableOpacity
           onPress={goBack}
           style={styles.leaveButton}
           title="離開">
           <Text style={styles.leaveText}>離開</Text>
         </TouchableOpacity>
-        <Text style={styles.helperText}>當你離開時請緊記按"離開"</Text>
+        <ShadowText style={styles.helperText}>
+          當你離開時請緊記按"離開"
+        </ShadowText>
       </View>
     </View>
   );

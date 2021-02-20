@@ -8,6 +8,7 @@ import Menu from '../components/menu';
 import ShadowText from '../components/shadowText';
 import moment from 'moment';
 import 'moment/locale/zh-hk';
+import styled from 'styled-components/native';
 
 const DateGreeting = () => {
   // const date = DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd, cccc');
@@ -29,6 +30,8 @@ const HomeScreen = ({navigation, route}) => {
   const isIos = Platform.OS === 'ios';
   const TOP_COLOR = '#12b187';
   const BOTTOM_COLOR = '#fff';
+  // TODO: add the exit ball....
+  const {withBall} = route?.params || {};
 
   // FYR: https://stackoverflow.com/questions/40366080/2-different-background-colours-for-scrollview-bounce
   return (
@@ -40,7 +43,7 @@ const HomeScreen = ({navigation, route}) => {
       {isIos && <View style={{height: SPACER_SIZE}} />}
       <View style={styles.view}>
         <DateGreeting />
-        <View style={styles.contentView}>
+        <StyledContentView>
           <View style={styles.menuView}>
             <Menu navigation={navigation} />
             <View style={styles.imageContainer}>
@@ -61,11 +64,20 @@ const HomeScreen = ({navigation, route}) => {
               </View>
             </View>
           </View>
-        </View>
+        </StyledContentView>
       </View>
     </ScrollView>
   );
 };
+
+const StyledContentView = styled(View)`
+  margin-top: 100;
+  border-top-left-radius: 36;
+  border-top-right-radius: 36;
+  background-color: #fff;
+  flex: 1;
+  box-shadow: 0px -1px 2px rgba(205, 205, 205, 0.5);
+`;
 
 const styles = StyleSheet.create({
   view: {
@@ -80,18 +92,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   menuView: {
-    marginTop: -50,
+    marginTop: -70,
   },
   noticeImageView: {
     width: '85%',
     borderRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
     elevation: 5,
     marginRight: 20,
     marginLeft: 20,
@@ -101,6 +113,12 @@ const styles = StyleSheet.create({
   noticeImage: {
     width: '100%',
     height: 100,
+    shadowColor: '#000',
+    // shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.75,
+    shadowRadius: 4,
+    // shadowColor: 'red',
+    shadowOffset: {height: 1, width: 0},
   },
   imageContainer: {
     alignItems: 'center',

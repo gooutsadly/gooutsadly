@@ -1,18 +1,13 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text} from 'react-native';
+import styled from 'styled-components/native';
 
 const ShadowText = (props) => {
-  return (
-    <Text style={{...styles.textShadow, ...props.style}}>{props.children}</Text>
-  );
+  return <StyledText style={{...props.style}}>{props.children}</StyledText>;
 };
 
-const styles = StyleSheet.create({
-  textShadow: {
-    textShadowColor: 'rgb(0, 0, 0)',
-    textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 4,
-  },
-});
+const StyledText = styled(Text)`
+  text-shadow: 0 0px 4px rgba(0, 0, 0, 0.75);
+`;
 
 export default ShadowText;
