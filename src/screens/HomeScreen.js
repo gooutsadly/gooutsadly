@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 import {Text, View, ScrollView, Image} from 'react-native';
 import {DateTime} from 'luxon';
@@ -25,13 +25,19 @@ const DateGreeting = () => {
 
 const HomeScreen = ({navigation, route}) => {
   const DATE = DateTime.local().setLocale('zh-HK').toFormat('yyyy-MM-dd');
+  const SPACER_SIZE = 1000; //arbitrary size
+  const isIos = Platform.OS === 'ios';
+  const TOP_COLOR = '#12b187';
+  const BOTTOM_COLOR = '#fff';
+
+  // FYR: https://stackoverflow.com/questions/40366080/2-different-background-colours-for-scrollview-bounce
   return (
     <ScrollView
-      style={styles.view}
-      contentContainerStyle={{
-        flexGrow: 1,
-        justifyContent: 'space-between',
-      }}>
+      style={{backgroundColor: isIos ? BOTTOM_COLOR : TOP_COLOR}}
+      contentContainerStyle={{backgroundColor: TOP_COLOR}}
+      contentInset={{top: -SPACER_SIZE}}
+      contentOffset={{y: SPACER_SIZE}}>
+      {isIos && <View style={{height: SPACER_SIZE}} />}
       <View style={styles.view}>
         <DateGreeting />
         <View style={styles.contentView}>
@@ -63,7 +69,7 @@ const HomeScreen = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: '#12b187',
+    // backgroundColor: '#12b187',
     flex: 1,
   },
   contentView: {
@@ -90,7 +96,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 20,
     overflow: 'hidden',
-    marginBottom: 100
+    marginBottom: 100,
   },
   noticeImage: {
     width: '100%',
