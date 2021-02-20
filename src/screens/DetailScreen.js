@@ -5,6 +5,7 @@ import {StyleSheet} from 'react-native';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {DateTime} from 'luxon';
 import ShadowText from '../components/shadowText';
+import styled from 'styled-components/native';
 
 const DetailScreen = ({navigation, route}) => {
   const {name} = route?.params || {};
@@ -34,12 +35,9 @@ const DetailScreen = ({navigation, route}) => {
           source={require('../../images/fake_checkbox.jpg')}
           style={{width: '100%', height: 135 / 2, marginBottom: 10}}
         />
-        <TouchableOpacity
-          onPress={goBack}
-          style={styles.leaveButton}
-          title="離開">
+        <LeaveButton onPress={goBack} style={styles.leaveButton} title="離開">
           <Text style={styles.leaveText}>離開</Text>
-        </TouchableOpacity>
+        </LeaveButton>
         <ShadowText style={styles.helperText}>
           當你離開時請緊記按"離開"
         </ShadowText>
@@ -47,6 +45,16 @@ const DetailScreen = ({navigation, route}) => {
     </View>
   );
 };
+
+const LeaveButton = styled(TouchableOpacity)`
+  margin-right: 60;
+  margin-left: 60;
+  padding-top: 20;
+  padding-bottom: 20;
+  background-color: #fed426;
+  border-radius: 48;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
+`;
 
 const styles = StyleSheet.create({
   bottom: {
@@ -58,14 +66,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     color: '#fff',
-  },
-  leaveButton: {
-    marginRight: 60,
-    marginLeft: 60,
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: '#fed426',
-    borderRadius: 48,
   },
   leaveText: {
     fontSize: 20,
