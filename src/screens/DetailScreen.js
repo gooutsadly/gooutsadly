@@ -47,12 +47,12 @@ const DetailScreen = ({navigation, route}) => {
 };
 
 const LeaveButton = styled(TouchableOpacity)`
-  margin-right: 60;
-  margin-left: 60;
-  padding-top: 20;
-  padding-bottom: 20;
+  margin-right: 60px;
+  margin-left: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: #fed426;
-  border-radius: 48;
+  border-radius: 48px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
 `;
 

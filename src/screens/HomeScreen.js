@@ -71,9 +71,9 @@ const HomeScreen = ({navigation, route}) => {
 };
 
 const StyledContentView = styled(View)`
-  margin-top: 100;
-  border-top-left-radius: 36;
-  border-top-right-radius: 36;
+  margin-top: 100px;
+  border-top-left-radius: 36px;
+  border-top-right-radius: 36px;
   background-color: #fff;
   flex: 1;
   box-shadow: 0px -1px 2px rgba(205, 205, 205, 0.5);
