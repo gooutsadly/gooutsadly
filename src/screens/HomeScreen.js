@@ -16,8 +16,17 @@ const DateGreeting = () => {
 
   return (
     <View style={styles.dateGreeting}>
-      <ShadowText style={{color: '#FFF'}}>{date}</ShadowText>
-      <ShadowText style={{color: '#FFF', marginTop: 15, fontSize: 30}}>
+      <ShadowText style={{
+        color: '#FFF',
+        fontSize: Platform.OS === 'ios' ? 14 : 12
+      }}>
+        {date}
+      </ShadowText>
+      <ShadowText style={{
+        color: '#FFF',
+        marginTop: Platform.OS === 'ios' ? 15 : 6,
+        fontSize: Platform.OS === 'ios' ? 30 : 24
+      }}>
         記錄你的到訪
       </ShadowText>
     </View>
@@ -71,7 +80,7 @@ const HomeScreen = ({navigation, route}) => {
 };
 
 const StyledContentView = styled(View)`
-  margin-top: 100px;
+  margin-top: ${Platform.os === 'ios' ? '100px' : '80px'};
   border-top-left-radius: 36px;
   border-top-right-radius: 36px;
   background-color: #fff;
@@ -84,15 +93,8 @@ const styles = StyleSheet.create({
     // backgroundColor: '#12b187',
     flex: 1,
   },
-  contentView: {
-    marginTop: 100,
-    borderTopLeftRadius: 36,
-    borderTopRightRadius: 36,
-    backgroundColor: '#FFF',
-    flex: 1,
-  },
   menuView: {
-    marginTop: -70,
+    marginTop: Platform.os === 'ios' ? -70 : -60,
   },
   noticeImageView: {
     width: '85%',
@@ -126,9 +128,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   dateGreeting: {
-    paddingLeft: 30,
+    paddingLeft: Platform.os === 'ios' ? 30 : 24,
     paddingRight: 30,
-    marginTop: 65,
+    marginTop: Platform.os === 'ios' ? 65 : 18,
   },
 });
 
