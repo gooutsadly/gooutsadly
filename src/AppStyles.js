@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
     fontSize: 18,
   },
+  backIconStyle: {marginLeft: 8},
 });
 
 export default styles;

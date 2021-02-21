@@ -1,9 +1,7 @@
 import React from 'react';
-
-import {StyleSheet} from 'react-native';
-
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {Text, View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {DateTime} from 'luxon';
+
 import ShadowText from '../components/shadowText';
 import styled from 'styled-components/native';
 
@@ -33,7 +31,7 @@ const DetailScreen = ({navigation, route}) => {
       <View style={styles.bottom}>
         <Image
           source={require('../../images/fake_checkbox.jpg')}
-          style={{width: '100%', height: 135 / 2, marginBottom: 10}}
+          style={styles.checkBox}
         />
         <LeaveButton onPress={goBack} style={styles.leaveButton} title="離開">
           <Text style={styles.leaveText}>離開</Text>
@@ -100,6 +98,11 @@ const styles = StyleSheet.create({
     width: 168 / 1.5,
     height: 138 / 1.5,
     marginTop: 5,
+  },
+  checkBox: {
+    width: '100%',
+    height: 135 / 2,
+    marginBottom: 10,
   },
 });
 

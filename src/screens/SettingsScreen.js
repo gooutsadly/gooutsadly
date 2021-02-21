@@ -35,13 +35,7 @@ const SettingsScreen = () => {
                   <Text style={styles.item}>{item.key}</Text>
                   {item.link && (
                     <Text
-                      style={{
-                        marginLeft: 3,
-                        fontWeight: 'bold',
-                        color: '#12b187',
-                        textDecorationStyle: 'solid',
-                        textDecorationLine: 'underline',
-                      }}
+                      style={styles.linkItem}
                       onPress={() =>
                         Linking.openURL('https://www.leavehomesafe.gov.hk')
                       }>
@@ -57,7 +51,6 @@ const SettingsScreen = () => {
                 )}
               </View>
               <View>
-                {/* {item.icon && <Icon name={item.icon} size={36} />} */}
                 {item.icon && (
                   <Image
                     source={item.icon}
@@ -78,8 +71,6 @@ const SettingsScreen = () => {
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#fff',
   },
   listContainer: {
@@ -99,6 +90,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  linkItem: {
+    marginLeft: 3,
+    fontWeight: 'bold',
+    color: '#12b187',
+    textDecorationStyle: 'solid',
+    textDecorationLine: 'underline',
   },
 });
 

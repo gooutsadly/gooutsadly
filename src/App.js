@@ -56,7 +56,7 @@ const App = () => {
                 name={'chevron-back-outline'}
                 size={36}
                 color={tintColor}
-                style={{marginLeft: 8}}
+                style={AppStyles.iconStyle}
               />
             ),
           }}

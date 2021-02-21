@@ -48,10 +48,8 @@ const Menu = ({navigation}) => {
       sliderWidth={SCREEN_WIDTH}
       itemWidth={250}
       layout={'default'}
-      enableMomentum={true}
-      containerCustomStyle={{
-        paddingLeft: 28,
-      }}
+      enableMomentum
+      containerCustomStyle={styles.container}
       activeSlideAlignment={'start'}
     />
   );
@@ -81,6 +79,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 8,
+  },
+  container: {
+    paddingLeft: 28,
   },
 });
 

@@ -166,14 +166,6 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const rectDimensions = SCREEN_WIDTH * 0.65; // this is equivalent to 255 from a 393 device width
-const rectBorderWidth = 5;
-const rectBorderColor = '#12b187';
-
-const scanBarWidth = SCREEN_WIDTH * 0.46; // this is equivalent to 180 from a 393 device width
-const scanBarHeight = SCREEN_WIDTH * 0.0025; //this is equivalent to 1 from a 393 device width
-const scanBarColor = '#22ff00';
-
-const iconScanColor = 'blue';
 
 const styles = StyleSheet.create({
   zeroContainer: {
@@ -191,9 +183,6 @@ const styles = StyleSheet.create({
   rectangle: {
     height: rectDimensions,
     width: rectDimensions,
-    // borderWidth: rectBorderWidth,
-    // borderColor: rectBorderColor,
-    // position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'transparent',
@@ -223,7 +212,6 @@ const styles = StyleSheet.create({
     backgroundColor: overlayColor,
     paddingBottom: SCREEN_WIDTH * 0.25,
     zIndex: -1,
-    // justifyContent: 'center',
     alignItems: 'center',
   },
 
@@ -238,11 +226,6 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
     backgroundColor: overlayColor,
   },
-  // markerContainer: {
-  //   backgroundColor: 'rgba(0,0,0, 0.5)',
-  //   height: Dimensions.get('window').height,
-  //   width: Dimensions.get('window').width,
-  // },
 });
 
 export default ScanScreen;

@@ -1,8 +1,12 @@
 import React from 'react';
-
-import {Platform, StyleSheet} from 'react-native';
-
-import {Text, View, ScrollView, Image} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  Image,
+  Platform,
+  StyleSheet,
+} from 'react-native';
 import {DateTime} from 'luxon';
 import Menu from '../components/menu';
 import ShadowText from '../components/shadowText';
@@ -16,21 +20,8 @@ const DateGreeting = () => {
 
   return (
     <View style={styles.dateGreeting}>
-      <ShadowText
-        style={{
-          color: '#FFF',
-          fontSize: Platform.OS === 'ios' ? 14 : 12,
-        }}>
-        {date}
-      </ShadowText>
-      <ShadowText
-        style={{
-          color: '#FFF',
-          marginTop: Platform.OS === 'ios' ? 15 : 6,
-          fontSize: Platform.OS === 'ios' ? 30 : 24,
-        }}>
-        記錄你的到訪
-      </ShadowText>
+      <ShadowText style={styles.greetingDate}>{date}</ShadowText>
+      <ShadowText style={styles.greetingText}>記錄你的到訪</ShadowText>
     </View>
   );
 };
@@ -41,8 +32,6 @@ const HomeScreen = ({navigation, route}) => {
   const isIos = Platform.OS === 'ios';
   const TOP_COLOR = '#12b187';
   const BOTTOM_COLOR = '#fff';
-  // TODO: add the exit ball....
-  const {withBall} = route?.params || {};
 
   // FYR: https://stackoverflow.com/questions/40366080/2-different-background-colours-for-scrollview-bounce
   return (
@@ -63,15 +52,7 @@ const HomeScreen = ({navigation, route}) => {
                   source={require('../../images/fake_home_buttom_notice.png')}
                   style={styles.noticeImage}
                 />
-                <Text
-                  style={{
-                    position: 'absolute',
-                    top: 15,
-                    left: '5.3%',
-                    fontSize: 11,
-                  }}>
-                  {`最後更新 ${DATE}`}
-                </Text>
+                <Text style={styles.lastUpdate}>{`最後更新 ${DATE}`}</Text>
               </View>
             </View>
           </View>
@@ -92,7 +73,6 @@ const StyledContentView = styled(View)`
 
 const styles = StyleSheet.create({
   view: {
-    // backgroundColor: '#12b187',
     flex: 1,
   },
   menuView: {
@@ -101,13 +81,6 @@ const styles = StyleSheet.create({
   noticeImageView: {
     width: '85%',
     borderRadius: 5,
-    // shadowColor: '#000',
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 2,
-    // },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.84,
     elevation: 5,
     marginRight: 20,
     marginLeft: 20,
@@ -133,6 +106,21 @@ const styles = StyleSheet.create({
     paddingLeft: Platform.os === 'ios' ? 30 : 24,
     paddingRight: 30,
     marginTop: Platform.os === 'ios' ? 65 : 18,
+  },
+  greetingDate: {
+    color: '#FFF',
+    fontSize: Platform.OS === 'ios' ? 14 : 12,
+  },
+  greetingText: {
+    color: '#FFF',
+    marginTop: Platform.OS === 'ios' ? 15 : 6,
+    fontSize: Platform.OS === 'ios' ? 30 : 24,
+  },
+  lastUpdate: {
+    position: 'absolute',
+    top: 15,
+    left: '5.3%',
+    fontSize: 11,
   },
 });
 
