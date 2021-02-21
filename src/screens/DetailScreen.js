@@ -1,12 +1,13 @@
-import React from 'react';
-import {Text, View, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, Image, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 import {DateTime} from 'luxon';
-
+import CheckBox from 'react-native-just-checkbox';
 import ShadowText from '../components/shadowText';
 import styled from 'styled-components/native';
 
 const DetailScreen = ({navigation, route}) => {
   const {name} = route?.params || {};
+  const [isChecked, setIsChecked] = useState(false);
   const goBack = () => {
     navigation.navigate('Home', {withBall: true});
   };
@@ -29,10 +30,54 @@ const DetailScreen = ({navigation, route}) => {
         style={styles.tickImage}
       />
       <View style={styles.bottom}>
-        <Image
-          source={require('../../images/fake_checkbox.jpg')}
-          style={styles.checkBox}
-        />
+        {
+          Platform.OS === 'ios'
+            ?
+            <Image
+              source={require('../../images/fake_checkbox.jpg')}
+              style={styles.checkBox}
+            />
+            :
+            <View style={{
+              alignItems: 'center',
+              marginBottom: 10,
+            }}>
+              <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '75%',
+                color: '#fff',
+              }}>
+                <CheckBox
+                  isChecked={isChecked}
+                  checkBoxSize={45}
+                  checkColor='#fff'
+                  squareCheckBox={true}
+                  onToggle={setIsChecked}
+                />
+                <ShadowText
+                  style={{
+                    marginLeft: 4,
+                    color: '#fff',
+                    fontSize: 12
+                  }}
+                >
+                  4小時後自動離開
+                </ShadowText>
+                <ShadowText
+                  style={{
+                    flex: 1,
+                    textAlign: 'right',
+                    color: '#fff',
+                    fontSize: 12
+                  }}
+                >
+                  變更
+                </ShadowText>
+              </View>
+            </View>
+        }
         <LeaveButton onPress={goBack} style={styles.leaveButton} title="離開">
           <Text style={styles.leaveText}>離開</Text>
         </LeaveButton>
