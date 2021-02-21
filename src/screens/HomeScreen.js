@@ -39,7 +39,9 @@ const HomeScreen = ({navigation, route}) => {
       style={{backgroundColor: isIos ? BOTTOM_COLOR : TOP_COLOR}}
       contentContainerStyle={{backgroundColor: TOP_COLOR}}
       contentInset={{top: -SPACER_SIZE}}
-      contentOffset={{y: SPACER_SIZE}}>
+      contentOffset={{y: SPACER_SIZE}}
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}>
       {isIos && <View style={{height: SPACER_SIZE}} />}
       <View style={styles.view}>
         <DateGreeting />
