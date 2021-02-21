@@ -84,11 +84,7 @@ const Tabs = ({descriptors, navigation}) => {
               icon = focused ? homeSelectedIcon : homeIcon;
           }
           // You can return any component that you like here!
-          return (
-            <Image
-              source={icon}
-            />
-          );
+          return <Image source={icon} />;
         },
       })}
       tabBarOptions={{

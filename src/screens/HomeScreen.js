@@ -16,17 +16,19 @@ const DateGreeting = () => {
 
   return (
     <View style={styles.dateGreeting}>
-      <ShadowText style={{
-        color: '#FFF',
-        fontSize: Platform.OS === 'ios' ? 14 : 12
-      }}>
+      <ShadowText
+        style={{
+          color: '#FFF',
+          fontSize: Platform.OS === 'ios' ? 14 : 12,
+        }}>
         {date}
       </ShadowText>
-      <ShadowText style={{
-        color: '#FFF',
-        marginTop: Platform.OS === 'ios' ? 15 : 6,
-        fontSize: Platform.OS === 'ios' ? 30 : 24
-      }}>
+      <ShadowText
+        style={{
+          color: '#FFF',
+          marginTop: Platform.OS === 'ios' ? 15 : 6,
+          fontSize: Platform.OS === 'ios' ? 30 : 24,
+        }}>
         記錄你的到訪
       </ShadowText>
     </View>
